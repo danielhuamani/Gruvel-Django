@@ -19,18 +19,14 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from apps.home.views import IndexView
-
+from app.home.views import IndexView
 from rest_framework import routers
-
 
 
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
-
-
-
+    url(r'^api-usuarios/', include('app.usuarios.urls', namespace="usuarios")),
     url(r'^$', IndexView.as_view(), name='index'),
 
 ]

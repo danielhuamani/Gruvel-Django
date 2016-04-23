@@ -43,7 +43,8 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
-    'apps.usuarios',
+    'app.core',
+    'app.usuarios',
 
 
 )
