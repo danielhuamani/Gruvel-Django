@@ -40,6 +40,7 @@ DJANGO_APPS = (
 
 THIRD_PARTY_APPS = (
     'rest_framework',
+    'corsheaders',
 )
 
 LOCAL_APPS = (
@@ -60,7 +61,14 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+        'google.com',
+        '127.0.0.1'
+    )
 
 ROOT_URLCONF = 'gruvel.urls'
 TEMPLATES = [
