@@ -67,8 +67,30 @@ MIDDLEWARE_CLASSES = [
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
         'google.com',
-        '127.0.0.1'
+        '127.0.0.1',
+        'localhost'
     )
+CORS_ALLOW_HEADERS = (
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'x-csrftoken',
+    'accept-encoding',
+    'accept-language'
+)
+REST_FRAMEWORK = {
+
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    # Make the default renderer class JSON when in production to prevent users from using the browsable API
+
+
+}
 
 ROOT_URLCONF = 'gruvel.urls'
 TEMPLATES = [

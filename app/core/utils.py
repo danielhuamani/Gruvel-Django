@@ -10,6 +10,9 @@ NUMERO_DE_ITERACIONES = 500
 
 def encrypt_password(password):
     ''' Encripta la contraseña '''
+    print SALT
+    print password
+    print NUMERO_DE_ITERACIONES
     return crypt(password, SALT, NUMERO_DE_ITERACIONES)
 
 
