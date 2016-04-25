@@ -7,7 +7,8 @@ from app.core.utils import validad_password, encrypt_password
 
 
 class Usuario(AuditableModel):
-    email = models.EmailField("Email")
+    nickname = models.CharField("nickname", max_length=120, blank=True)
+    email = models.EmailField("Email", unique=True)
     name = models.CharField("nombre", max_length=120)
     lastname = models.CharField("apellido", max_length=120)
     password = models.CharField("Password", max_length=120)

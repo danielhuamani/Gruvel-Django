@@ -12,7 +12,7 @@ def usuarios(request):
     data = {'status': 200}
     # METODOS
     if request.method == "GET":
-        listado_usuario = list(Usuario.objects.all().values('email', 'nombre', 'apellido'))
+        listado_usuario = list(Usuario.objects.all().values('email', 'name', 'lastname'))
         data['usuarios'] = listado_usuario
     if request.method == "POST":
         data = json.loads(request.body)
@@ -22,7 +22,7 @@ def usuarios(request):
         password = data['password']
         password_encrypt = encrypt_password(password)
         try:
-            usuario = Usuario(email=email, nombre=nombre, apellido=apellido, password=password_encrypt).save()
+            usuario = Usuario(email=email, name=nombre, lastname=apellido, password=password_encrypt).save()
             data = {'status': 200}
             print "dadas"
         except Exception, e:
