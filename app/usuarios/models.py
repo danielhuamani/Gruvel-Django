@@ -10,7 +10,7 @@ class Usuario(AuditableModel):
     nickname = models.CharField("nickname", max_length=120, blank=True)
     email = models.EmailField("Email", unique=True)
     name = models.CharField("nombre", max_length=120)
-    lastname = models.CharField("apellido", max_length=120)
+    lastname = models.CharField("apellido", max_length=120, blank=True)
     password = models.CharField("Password", max_length=120)
     codigo = models.CharField("uuid", max_length=120, blank=True)
     set_password = models.BooleanField("¿Contraseña encriptada?", default=False)
@@ -33,7 +33,7 @@ class Usuario(AuditableModel):
         super(Usuario, self).save(*args, **kwargs)
 
     def get_full_name(self):
-        return self.nombre
+        return self.name
 
     def is_authenticated(self):
         return True
@@ -42,4 +42,13 @@ class Usuario(AuditableModel):
         return validad_password(password, self.password)
 
     def __unicode__(self):
-        return self.nombre
+        return self.name
+
+
+class Token(models.Model):
+    ''' Token utilizado para la autenticación'''
+    usuario = models.ForeignKey(Usuario, related_name='usuario_token')
+    key = models.CharField('Key', max_length=20, blank=True, unique=True, db_index=True)
+
+    def __unicode__(self):
+        return self.key
