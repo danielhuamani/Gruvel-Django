@@ -9,7 +9,7 @@ class AuthBackend(object):
 
     def authenticate(self, username=None, password=None):
         try:
-            user = Usuario.objects.get(correo=username)
+            user = Usuario.objects.get(email=username)
         except Usuario.DoesNotExist:
             return None
 

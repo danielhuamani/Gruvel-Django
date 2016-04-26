@@ -50,11 +50,11 @@ def login(request, id=None):
     '''
     data = {'status': 500}
     if request.method == "POST":
-        username = request.POST.get('username')
+        email = request.POST.get('email')
         password = request.POST.get('password')
 
         try:
-            Usuario.objects.get(correo=username)
+            Usuario.objects.get(correo=email)
             usuario_valido = True
         except Usuario.DoesNotExist:
             data['msg'] = 'El usuario no existe'
@@ -62,7 +62,7 @@ def login(request, id=None):
             data['status'] = 500
         usuario = None
         if usuario_valido:
-            usuario = authenticate(username=username, password=password)
+            usuario = authenticate(username=email, password=password)
 
             if not usuario:
                 data['msg'] = u'El usuario + contraseña son inválidos'
