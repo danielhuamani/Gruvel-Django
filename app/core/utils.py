@@ -18,4 +18,5 @@ def encrypt_password(password):
 
 def validad_password(password, encoded):
     ''' Contrasta la contraseña brindada con el valor encriptado '''
+    print encrypt_password(password)
     return encrypt_password(password) == encoded

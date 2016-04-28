@@ -8,7 +8,6 @@ from django.contrib.auth import authenticate
 from .models import Usuario
 from .utils import genera_token
 from app.core.utils import encrypt_password
-from .models import Usuario
 from .serializers import UsuarioSerializer
 
 import json
@@ -54,7 +53,7 @@ def login(request, id=None):
         password = request.POST.get('password')
 
         try:
-            Usuario.objects.get(correo=email)
+            Usuario.objects.get(email=email)
             usuario_valido = True
         except Usuario.DoesNotExist:
             data['msg'] = 'El usuario no existe'
@@ -63,7 +62,6 @@ def login(request, id=None):
         usuario = None
         if usuario_valido:
             usuario = authenticate(username=email, password=password)
-
             if not usuario:
                 data['msg'] = u'El usuario + contraseña son inválidos'
 

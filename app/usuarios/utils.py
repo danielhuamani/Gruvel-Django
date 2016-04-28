@@ -2,7 +2,7 @@
 from uuid import uuid4
 from .models import Token
 
-LONGITUD_DE_TOKEN = 12
+LONGITUD_DE_TOKEN = 20
 
 
 def genera_token(usuario):

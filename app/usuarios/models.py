@@ -14,6 +14,7 @@ class Usuario(AuditableModel):
     password = models.CharField("Password", max_length=120)
     codigo = models.CharField("uuid", max_length=120, blank=True)
     set_password = models.BooleanField("¿Contraseña encriptada?", default=False)
+    last_login = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Usuarios"
