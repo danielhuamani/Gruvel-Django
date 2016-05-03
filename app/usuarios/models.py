@@ -49,7 +49,7 @@ class Usuario(AuditableModel):
 class Token(models.Model):
     ''' Token utilizado para la autenticación'''
     usuario = models.ForeignKey(Usuario, related_name='usuario_token')
-    key = models.CharField('Key', max_length=20, blank=True, unique=True, db_index=True)
+    key = models.CharField('Key', max_length=32, blank=True, unique=True, db_index=True)
 
     def __unicode__(self):
         return self.key

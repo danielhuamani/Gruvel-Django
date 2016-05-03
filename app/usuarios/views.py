@@ -68,7 +68,13 @@ def login(request, id=None):
         if usuario:
             data['status'] = 200
             token = genera_token(usuario)
+            data['usuario'] = {
+                'nickname': usuario.nickname,
+                'email': usuario.email,
+                'name': usuario.name,
+                'lastname': usuario.lastname,
 
+            }
             data['token'] = token.key
 
     return JsonResponse(data)

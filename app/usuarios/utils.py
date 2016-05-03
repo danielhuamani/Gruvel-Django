@@ -2,7 +2,7 @@
 from uuid import uuid4
 from .models import Token
 
-LONGITUD_DE_TOKEN = 20
+LONGITUD_DE_TOKEN = 32
 
 
 def genera_token(usuario):
@@ -11,6 +11,7 @@ def genera_token(usuario):
 
     # generamos un token único
     while error:
+        print str(uuid4())
         _uuid = str(uuid4()).replace('-', '')[:LONGITUD_DE_TOKEN]
         token = Token(usuario=usuario, key=_uuid)
         try:
